@@ -14,12 +14,12 @@ export default function Header(){
         <>
         <section class='header'>    
         <h1 class = 'title'>Backup Central</h1>
+        </section>
         <div class = 'all-logos'>
         <img class = 'logo' src={aws}/>
         <img class = 'logo' src={postgres}/>
         <img class = 'logo' src={mongo}/>
         </div>
-        </section>
         </>
     )
 }

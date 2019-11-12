@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
+.header{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+
 .all-logos{
     display:flex;
     justify-content: space-around;
@@ -5,5 +16,5 @@
 
 
 .logo{
-    width: 20%
+    width: 100px
 }
