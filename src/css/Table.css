@@ -1,0 +1,20 @@
+.stats{
+    display:flex;
+}
+
+.stats h4{
+    margin: 0;
+    width:300px;
+    border:solid 1px rgb(255, 208, 0);
+
+}
+
+.data{
+    display:flex;
+}
+
+.data p{
+    width:300px;
+    border:solid 1px rgb(255, 208, 0);
+    margin: 0;
+}

@@ -8,12 +8,10 @@
     justify-content: center;
 }
 
-
 .all-logos{
     display:flex;
     justify-content: space-around;
 }
-
 
 .logo{
     width: 100px
