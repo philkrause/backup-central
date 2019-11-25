@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
 
 .header{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Red Hat Text', sans-serif;   
     font-size: 3rem;
     display: flex;
     justify-content: center;
+    color:rgb(12, 1, 156);
+    background-color: white ;
+    height: 9rem;
 }
 
-.all-logos{
-    display:flex;
-    justify-content: space-around;
-}
-
-.logo{
-    width: 100px
+.exzeo{
+    width:100px;
+    height:100px;
+    border-radius:5px;
+    margin-top: 2rem;
 }

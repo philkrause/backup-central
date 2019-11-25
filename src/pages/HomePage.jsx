@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
-import Table from '../components/Table'
-
+import Mongo from '../components/Mongo'
+import Rds from '../components/Rds'
+import Vault from '../components/Vault'
 
 export default function HomePage(){
     
@@ -9,7 +10,9 @@ export default function HomePage(){
     return(
         <>
         <Header/>
-        <Table/>
+        <Mongo/>
+        <Rds/>
+        <Vault/>
         </>
     )
 }

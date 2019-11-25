@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+
+body{
+width:100vw;
+}
+
+
+.logo{
+    margin-left:1rem;
+    width:100px;
+    height:auto;
+    padding:0
+}
+
+.column{
+    display:flex;
+    justify-content: center;
+    background-color:white;
+}
+
+.column p{
+    font-family: 'Red Hat Text', sans-serif;   
+    margin:0;
+    width:14.3vw;
+    border:solid 2px rgb(255, 193, 78);
+    border-radius:5px;
+    font-size:18px;
+}
+
+.data{
+    display:flex;
+    justify-content: center;
+}
+
+
+.data p{
+    margin: 0;
+    width:14.4vw;
+    border:solid 1px rgb(255, 189, 6);
+    font-size: 18px;
+    background-color:white;
+
+}
+
+.complete{
+    color:green;
+}
+
+
+.incomplete{
+    color:red;
+}
+
+.toggle{
+    display: flex;
+    margin-left: 13vw;
+    color:green;
+}
+
+.show{
+    width: 86px;
+    height: 45px;
+    border-radius: 4px;
+}
+
+
+@media only screen and (max-width: 1235px){
+    .column p:nth-child(2) {
+        display:none;
+    }
+    .data div:nth-child(2) {
+        display:none
+    }
+
+    .column p {
+        font-size: 14px;
+        height:2rem;
+    }
+    .data div p {
+        font-size: 13px;
+    }
+    .data p{
+        font-size: 13px;
+        height:2rem;
+    }
+    
+
+}
