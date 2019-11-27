@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap');
+
+body{
+width:100vw;
+}
+
+
+
+
+.brand{
+    display:flex;
+    justify-content: flex-start;
+}
+
+.columnMongo{
+    display:flex;
+    justify-content: center;
+    background-color:white;
+}
+.columnAWS{
+    display:flex;
+    justify-content: center;
+    background-color:white;
+}
+.columnRDS{
+    display:flex;
+    justify-content: center;
+    background-color:white;
+}
+
+.columnMongo p{
+    font-family: 'Red Hat Text', sans-serif;   
+    margin:0;
+    width:14.3vw;
+    border:solid 2px rgb(5, 158, 0);
+    border-radius:5px;
+    font-size:18px;
+}
+.columnAWS p{
+    font-family: 'Red Hat Text', sans-serif;   
+    margin:0;
+    width:14.3vw;
+    border:solid 2px rgb(250, 192, 0);
+    border-radius:5px;
+    font-size:18px;
+}
+.columnRDS p{
+    font-family: 'Red Hat Text', sans-serif;   
+    margin:0;
+    width:14.3vw;
+    border:solid 2px rgb(0, 113, 158);
+    border-radius:5px;
+    font-size:18px;
+}
+
+.dataMongo{
+    display:flex;
+    justify-content: center;
+}
+.dataRDS{
+    display:flex;
+    justify-content: center;
+}
+.dataAWS{
+    display:flex;
+    justify-content: center;
+}
+
+
+.dataMongo p{
+    margin: 0;
+    width:14.4vw;
+    border:solid 1px rgb(5, 158, 0);
+    font-size: 18px;
+    background-color:white;
+
+}
+.dataRDS p{
+    margin: 0;
+    width:14.4vw;
+    border:solid 1px rgb(0, 113, 158);
+    font-size: 18px;
+    background-color:white;
+
+}
+.dataAWS p{
+    margin: 0;
+    width:14.4vw;
+    border:solid 1px rgb(250, 192, 0);
+    font-size: 18px;
+    background-color:white;
+
+}
+
+.complete{
+    color:green;
+}
+
+
+.incomplete{
+    color:red;
+}
+
+.toggle{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 13vw;
+
+}
+
+.logo{
+    margin-left:10rem;
+    width:100px;
+    height:auto;
+    padding:0
+}
+
+
+.show{
+    padding:0;
+    width: 86px;
+    height: 45px;
+    border-radius: 4px;
+    margin-top:1.2rem;
+    margin-right: 1.2rem;
+}
+
+
+@media only screen and (max-width: 1235px){
+    .columnMongo p:nth-child(2) {
+        display:none;
+    }
+    .dataMongo div:nth-child(2) {
+        display:none
+    }
+
+    .columnMongo p {
+        font-size: 14px;
+        height:2rem;
+    }
+    .dataMogno div p {
+        font-size: 13px;
+    }
+    .dataMongo p{
+        font-size: 13px;
+        height:2rem;
+    }
+    .columnRDS p:nth-child(2) {
+        display:none;
+    }
+    .dataRDS div:nth-child(2) {
+        display:none
+    }
+
+    .columnRDS p {
+        font-size: 14px;
+        height:2rem;
+    }
+    .dataRDS div p {
+        font-size: 13px;
+    }
+    .dataRDS p{
+        font-size: 13px;
+        height:2rem;
+    }
+    .columnAWS p:nth-child(2) {
+        display:none;
+    }
+    .dataAWS div:nth-child(2) {
+        display:none
+    }
+
+    .columnAWS p {
+        font-size: 14px;
+        height:2rem;
+    }
+    .dataAWS div p {
+        font-size: 13px;
+    }
+    .dataAWS p{
+        font-size: 13px;
+        height:2rem;
+    }
+    
+
+}

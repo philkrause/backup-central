@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import '../css/Mongo.css'
+import '../css/Table.css'
 import axios from 'axios'
 import mongoImg from '../images/mongo.jpg'
 import Moment from 'react-moment'
@@ -8,8 +8,6 @@ import Moment from 'react-moment'
 export default function Mongo(){
 
     const [mongoData, setmongoData] = useState([])
-    const [recentData, setrecentData] = useState([])
-    const [filter, setFilter] = useState([])
     let [toggle, setToggle] = useState(false)
     const mongoURL = `http://localhost:8080/mongo`
         
@@ -30,27 +28,19 @@ export default function Mongo(){
                 }
             
               })
-            .then(resp=> {      
+            .then(resp=> {    
                     setmongoData(resp.data.results)
-                    setrecentData(resp.data.results.slice(0,3))
-                    setFilter(mongoData.map(f =>  f.created.date.split('-')).map(f => f[2]))
+                    // setFilter(mongoData.map(f =>  f.created.date.split('-')).map(f => f[2]))
             })
 }
 const toggler =()=>{
     setToggle(!toggle)
 }
 
-    const renderData = () =>{
-        if (toggle === true){
-            return mongoData
-            
-        } 
-        if (toggle === false){
-            return recentData
-        }
-
-
-    }
+const renderData = () =>{
+    if (toggle === true){return mongoData} 
+    if (toggle === false){return mongoData.slice(0,3)}
+}
 useEffect(()=>{
     getMongo()
 }, [])
@@ -59,11 +49,11 @@ useEffect(()=>{
 
     return(
     <>
-    <img className = 'logo' src = {mongoImg}/>
     <div className = 'toggle'>
+    <img className = 'logo' src = {mongoImg} alt = 'mongo logo'/>
     <button className='show' onClick={toggler}>{toggle ? "Show Less" : "Show More"}</button>    
     </div>  
-    <section className = 'column'>
+    <section className = 'columnMongo'>
             <p>Creation Time</p>
             <p>Backup Job ID</p>
             <p>Data Size</p>
@@ -72,7 +62,7 @@ useEffect(()=>{
     </section>
         {renderData().map((m,i)=> {
             return(
-            <section key={i} className = 'data'>
+            <section key={i} className = 'dataMongo'>
             <div>
             <p key={i}>
                 <Moment format="lll">
@@ -89,9 +79,9 @@ useEffect(()=>{
             <div>
             <p key={i}>{(m.parts[0].fileSizeBytes /1073741824 ).toFixed(2)} GB</p>
             </div>
-            {m.complete
+            {m.complete == true
             ? <p key={i} className='complete'>COMPLETE</p> 
-            : <p className='incomplete'>Failed</p>
+            : <p className='incomplete'>FAILED</p>
             }   
             </section>
             
@@ -121,3 +111,4 @@ useEffect(()=>{
 //             console.log(day)
 //             // console.log(day,"day")
 //         }
+

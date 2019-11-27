@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import '../css/Mongo.css'
+import '../css/Table.css'
 import axios from 'axios'
 import postgresImg from '../images/postgres.png'
 import Moment from 'react-moment'
@@ -8,8 +8,6 @@ import Moment from 'react-moment'
 export default function Mongo(){
 
     const [rdsData, setrdsData] = useState([])
-    const [recentData, setrecentData] = useState([])
-    const [filter, setFilter] = useState([])
     let [toggle, setToggle] = useState(false)
     const rdsURL = `http://localhost:8080/rds`
         
@@ -30,15 +28,13 @@ export default function Mongo(){
                 }
             
               })
-            .then(resp=> {       
-                    setrdsData(resp.data.DBSnapshots)
-                    setrecentData(resp.data.DBSnapshots.slice(0,3))
+            .then(resp=> { 
+                setrdsData(resp.data.DBSnapshots.sort((a,b) => new Date(b.SnapshotCreateTime) - new Date(a.SnapshotCreateTime)))
             })
-}
-
-if (rdsData){
-    rdsData.reverse()
-}
+        }
+        
+        
+        console.log(rdsData)
 
 const toggler =()=>{
     setToggle(!toggle)
@@ -46,11 +42,11 @@ const toggler =()=>{
 
     const renderData = () =>{
         if (toggle === true){
-            return rdsData
+            return rdsData.sort((a,b) => a.SnapshotCreateTime - b.SnapshotCreateTime)
             
         } 
         if (toggle === false){
-            return recentData
+            return rdsData.slice(0,3)
         }
 
 
@@ -63,29 +59,29 @@ useEffect(()=>{
 
     return(
     <>
-    <img className = 'logo' src = {postgresImg}/>
     <div className = 'toggle'>
+    <img className = 'logo' src = {postgresImg}/>
     <button className='show' onClick={toggler}>{toggle ? "Show Less" : "Show More"}</button>    
     </div>  
-    <section className = 'column'>
+    <section className = 'columnRDS'>
             <p>Creation Time</p>
-            <p>Backup Job ID</p>
+            <p>Environment</p>
             <p>Engine</p>
             <p>Availability Zone</p>
             <p>Status</p>
     </section>
         {renderData().map((m,i)=> {
             return(
-            <section key={i} className = 'data'>
+            <section key={i} className = 'dataRDS'>
             <div>
             <p key={i}>
                 <Moment format="lll">
-                {m.InstanceCreateTime}
+                {m.SnapshotCreateTime}
                 </Moment>
                 </p>
             </div>
             <div>
-            <p key={i}>{m.DbiResourceId.slice(3,15)}</p>
+            <p key={i}>{m.DBSnapshotIdentifier.slice(4,25)}</p>
             </div>
             <div>
             <p key={i}>{m.Engine}</p>
@@ -95,7 +91,7 @@ useEffect(()=>{
             </div>
             {m.PercentProgress === 100
             ? <p key={i} className='complete'>COMPLETE</p> 
-            : <p className='incomplete'>Failed</p>
+            : <p className='incomplete'>FAILED</p>
             }   
             </section>
             

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import '../css/Mongo.css'
+import '../css/Table.css'
 import axios from 'axios'
 import awsImg from '../images/aws.jpg'
 import Moment from 'react-moment'
@@ -8,8 +8,6 @@ import Moment from 'react-moment'
 export default function Vault(){
 
     const [vaultData, setvaultData] = useState([])
-    const [recentData, setrecentData] = useState([])
-    const [filter, setFilter] = useState([])
     let [toggle, setToggle] = useState(false)
     const vaultURL = `http://localhost:8080/vault`
         
@@ -31,15 +29,14 @@ export default function Vault(){
             
               })
             .then(resp=> {
-                console.log(resp)        
+                   
                     setvaultData(resp.data.BackupJobs)
-                    setrecentData(resp.data.BackupJobs.reverse().slice(0,3))
             })
 }
 
-if (vaultData){
-    vaultData.reverse()
-}
+// if (vaultData){
+//     vaultData.reverse()
+// }
 
 const toggler =()=>{
     setToggle(!toggle)
@@ -51,7 +48,7 @@ const toggler =()=>{
             
         } 
         if (toggle === false){
-            return recentData
+            return vaultData.slice(0,3)
         }
 
 
@@ -64,20 +61,20 @@ useEffect(()=>{
 
     return(
     <>
-    <img className = 'logo' src = {awsImg}/>
     <div className = 'toggle'>
+    <img className = 'logo' src = {awsImg}/>
     <button className='show' onClick={toggler}>{toggle ? "Show Less" : "Show More"}</button>    
     </div>  
-    <section className = 'column'>
+    <section className = 'columnAWS'>
             <p>Creation Time</p>
-            <p>Backup Job ID</p>
+            <p>Resource Arn</p>
             <p>Resource Type</p>
             <p>Backup Size</p>
             <p>Status</p>
     </section>
         {renderData().map((m,i)=> {
             return(
-            <section key={i} className = 'data'>
+            <section key={i} className = 'dataAWS'>
             <div>
             <p key={i}>
                 <Moment format="lll">
@@ -86,7 +83,7 @@ useEffect(()=>{
                 </p>
             </div>
             <div>
-            <p key={i}>{m.BackupJobId.slice(20,30)}</p>
+            <p key={i}>{m.ResourceArn.substring(m.ResourceArn.lastIndexOf('/')+1).slice(0, 14)}</p>
             </div>
             <div>
             <p key={i}>{m.ResourceType}</p>
