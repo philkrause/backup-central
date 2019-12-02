@@ -10,6 +10,8 @@ export default function Mongo(){
     const [rdsData, setrdsData] = useState([])
     let [toggle, setToggle] = useState(false)
     const rdsURL = `http://localhost:8080/rds`
+
+    
         
     const getRds=(e)=>{
             axios({method: 'GET', url: rdsURL})
@@ -28,21 +30,23 @@ export default function Mongo(){
                 }
             
               })
-            .then(resp=> { 
-                setrdsData(resp.data.DBSnapshots.sort((a,b) => new Date(b.SnapshotCreateTime) - new Date(a.SnapshotCreateTime)))
+            .then(resp=> {
+                console.log(resp.data) 
+                setrdsData(resp.data.DBSnapshots.sort((a,b) => new Date (b.SnapshotCreateTime) - new Date(a.SnapshotCreateTime)))
             })
+           
         }
         
         
-        console.log(rdsData)
 
-const toggler =()=>{
-    setToggle(!toggle)
-}
+
+    const toggler =()=>{
+        setToggle(!toggle)
+    }
 
     const renderData = () =>{
         if (toggle === true){
-            return rdsData.sort((a,b) => a.SnapshotCreateTime - b.SnapshotCreateTime)
+            return rdsData
             
         } 
         if (toggle === false){
