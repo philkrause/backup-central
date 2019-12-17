@@ -14,7 +14,7 @@ export default function Mongo(){
     
         
     const getRds=(e)=>{
-            axios({method: 'GET', url: rdsURL})
+            axios({method: 'GET', url: rdsURL, responseType:'string'})
             .catch(function (error) {
                 if (error.response) {
                   // Request made and server responded
@@ -31,7 +31,7 @@ export default function Mongo(){
             
               })
             .then(resp=> {
-                console.log(resp.data) 
+                
                 setrdsData(resp.data.DBSnapshots.sort((a,b) => new Date (b.SnapshotCreateTime) - new Date(a.SnapshotCreateTime)))
             })
            
@@ -50,7 +50,7 @@ export default function Mongo(){
             
         } 
         if (toggle === false){
-            return rdsData.slice(0,3)
+            return rdsData.slice(0,5)
         }
 
 

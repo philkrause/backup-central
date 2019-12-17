@@ -48,7 +48,7 @@ const toggler =()=>{
             
         } 
         if (toggle === false){
-            return vaultData.slice(0,3)
+            return vaultData.slice(0,5)
         }
 
 

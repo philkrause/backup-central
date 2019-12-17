@@ -39,7 +39,7 @@ const toggler =()=>{
 
 const renderData = () =>{
     if (toggle === true){return mongoData} 
-    if (toggle === false){return mongoData.slice(0,3)}
+    if (toggle === false){return mongoData.slice(0,5)}
 }
 useEffect(()=>{
     getMongo()
